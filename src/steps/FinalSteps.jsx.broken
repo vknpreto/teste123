@@ -1,0 +1,559 @@
+import { useState, useEffect, useRef } from 'react'
+import './FinalSteps.css'
+import './SharedStyles.css' // Import shared styles for option cards
+
+export function Step20Results({ onNext, answers }) {
+    const [score, setScore] = useState(0)
+
+    useEffect(() => {
+        let correctCount = 0
+        if (answers.q1Correct) correctCount++
+        if (answers.q2Correct) correctCount++
+        if (answers.q3Correct) correctCount++
+        if (answers.q4Correct) correctCount++
+        if (answers.q5Correct) correctCount++
+        if (answers.q6Correct) correctCount++
+        if (answers.q7Correct) correctCount++
+        if (answers.q8Correct) correctCount++
+        if (answers.q9Correct) correctCount++
+        if (answers.q10Correct) correctCount++
+        setScore(correctCount)
+    }, [answers])
+
+    const isLowScore = score < 6
+    const age = answers.age || '18 a 34'
+
+    return (
+        <div className="results-step fade-in">
+            <div className="progress-bar"><div className="progress-fill" style={{ width: '100%' }}></div></div>
+            <div className="results-content">
+                <h1 className="step-title" style={{ textAlign: 'center', marginBottom: '24px', fontSize: '32px' }}>Resultados de tu Desafío Bíblico</h1>
+
+                <div className="results-image-placeholder">
+                    <img src="/results-jesus.png" alt="Jesus" />
+                </div>
+
+                <div className={`score-box ${isLowScore ? 'bad' : 'good'}`}>
+                    <h2 className="score-title">Acertaste {score} de 10 preguntas</h2>
+
+                    {isLowScore ? (
+                        <p className="score-message bad">
+                            Pero no te desanimes, no es tu culpa...<br /><br />
+                            Esto no es falta de fe, es una señal de Dios para que profundices tu conocimiento.<br /><br />
+                            El universo de la Biblia es vasto y complejo, y es normal tener dificultades para comprender y memorizar los detalles.
+                        </p>
+                    ) : (
+                        <p className="score-message good">
+                            ¡Felicidades! Tienes un buen conocimiento.<br /><br />
+                            Pero siempre hay espacio para profundizar más en los misterios de la Palabra.<br /><br />
+                            El universo de la Biblia es vasto y complejo, y es normal querer comprender aún más los detalles.
+                        </p>
+                    )}
+                </div>
+
+                {/* VERTICAL CHART - PROMEDIO DE ACIERTOS */}
+                <div className="vertical-chart-container">
+                    <div className="chart-header-box">Promedio de aciertos</div>
+
+                    <div className="vertical-bars-wrapper">
+                        {/* Promedio Bar (Green, Tall) */}
+                        <div className="v-bar-group">
+                            <div className="v-bar green-tall"></div>
+                        </div>
+
+                        {/* User Bar (Gray, Short) */}
+                        <div className="v-bar-group">
+                            <div className="v-bar-label-floating">Usted</div>
+                            <div className="v-bar gray-short"></div>
+                        </div>
+                    </div>
+
+                    <p className="age-context" style={{ marginTop: '16px' }}>Personas de {age} años</p>
+                </div>
+
+                <div className="comparison-box">
+                    <p className="comparison-text">
+                        Lamentablemente, quedaste un 73% por debajo del promedio de las personas de tu edad en conocimiento bíblico.
+                    </p>
+                </div>
+
+                <div className="good-news-card">
+                    <h3 className="good-news-title">¿La buena noticia?</h3>
+
+                    <p className="good-news-text">
+                        Entender la Biblia no tiene por qué ser una <strong>tarea difícil</strong>.
+                    </p>
+
+                    <p className="good-news-text">
+                        La verdadera transformación ocurre cuando logras absorber las enseñanzas de Dios con <strong>simplicidad e intención</strong>.
+                    </p>
+                </div>
+
+                <div className="objective-card">
+                    <h3 className="good-news-title">✨ Ese es el objetivo del Resumen Cronológico de la Biblia:</h3>
+
+                    <p className="good-news-text">
+                        Muchos no lo saben, <strong>pero la Biblia no está en orden cronológico</strong>; es decir, el Libro Sagrado es diferente de un libro común que tiene principio, desarrollo y final.
+                    </p>
+
+                    <p className="good-news-text">
+                        Y por este motivo, la mayoría de los cristianos abandona la lectura. No por falta de interés, sino porque se sienten perdidos al <strong>no tener un orden que seguir</strong>.
+                    </p>
+                </div>
+
+                <div className="good-news-image-placeholder">
+                    <img src="/results-product.png" alt="Producto" />
+                </div>
+
+                <button className="btn btn-primary pulse" onClick={() => onNext({})}>
+                    Quiero aprender la Biblia de forma cronológica y objetiva
+                </button>
+            </div>
+// Step22Audio removed as per user request
+
+
+
+            export function Step23PreOfferQ1({onNext}) {
+    const [selected, setSelected] = useState(null)
+            const options = [
+            {id: 1, text: 'Sí, esto es exactamente lo que necesito', icon: '✅' },
+            {id: 2, text: 'Aún no estoy segura, seguiré como estoy', icon: '❌' }
+            ]
+
+    const handleSelect = (option) => {
+                setSelected(option.id)
+        setTimeout(() => onNext({preOfferQ1: option.text }), 50)
+    }
+
+            return (
+            <div className="step-container fade-in">
+                <div className="step-content">
+                    <h2 className="step-title">¿Te gustaría entender la Biblia de forma cronológica, visualizando las conexiones entre las principales enseñanzas e historias?</h2>
+                    <div className="options-list">
+                        {options.map((option) => (
+                            <div key={option.id} className={`option-card-icon ${selected === option.id ? 'selected' : ''}`} onClick={() => handleSelect(option)}>
+                                <span style={{ marginRight: '12px', fontSize: '20px' }}>{option.icon}</span>
+                                <span className="option-text-icon">{option.text}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            )
+}
+
+            export function Step24PreOfferQ2({onNext}) {
+    const [selected, setSelected] = useState(null)
+            const options = [
+            {id: 1, text: 'Sí, quiero comenzar ahora y ver la diferencia', icon: '✅' },
+            {id: 2, text: 'Prefiero continuar a mi ritmo actual', icon: '❌' }
+            ]
+
+    const handleSelect = (option) => {
+                setSelected(option.id)
+        setTimeout(() => onNext({preOfferQ2: option.text }), 50)
+    }
+
+            return (
+            <div className="step-container fade-in">
+                <div className="step-content">
+                    <h2 className="step-title">¿Estás listo para comprender la Biblia exactamente en el orden en que sucedió con una metodología que te guiará cronológicamente desde el Génesis hasta el Apocalipsis?</h2>
+                    <div className="options-list">
+                        {options.map((option) => (
+                            <div key={option.id} className={`option-card-icon ${selected === option.id ? 'selected' : ''}`} onClick={() => handleSelect(option)}>
+                                <span style={{ marginRight: '12px', fontSize: '20px' }}>{option.icon}</span>
+                                <span className="option-text-icon">{option.text}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            )
+}
+
+            export function ShortsPlayer({videoId}) {
+    const [isMuted, setIsMuted] = useState(true)
+            const playerRef = useRef(null)
+            const containerId = `shorts-player-${videoId}`
+
+    useEffect(() => {
+        if (!window.YT) {
+            const tag = document.createElement('script')
+            tag.src = 'https://www.youtube.com/iframe_api'
+            document.body.appendChild(tag)
+        }
+
+        const initPlayer = () => {
+            if (playerRef.current) return
+
+            playerRef.current = new window.YT.Player(containerId, {
+                videoId: videoId,
+            playerVars: {
+                autoplay: 1,
+            mute: 1,
+            controls: 0,
+            loop: 1,
+            playlist: videoId,
+            playsinline: 1,
+            modestbranding: 1,
+            rel: 0,
+            fs: 0,
+            disablekb: 1,
+            iv_load_policy: 3
+                },
+            events: {
+                onReady: (event) => {
+                event.target.playVideo()
+            }
+                }
+            })
+        }
+
+        const interval = setInterval(() => {
+            if (window.YT && window.YT.Player) {
+                initPlayer()
+                clearInterval(interval)
+            }
+        }, 100)
+
+        return () => {
+                clearInterval(interval)
+            }
+    }, [videoId, containerId])
+
+    const handleUnmute = () => {
+        if (playerRef.current && playerRef.current.unMute) {
+                playerRef.current.unMute()
+            setIsMuted(false)
+        }
+    }
+
+            return (
+            <div className="vsl-video-container" style={{ maxWidth: '300px', margin: '0 auto 20px' }}>
+                <div className="vsl-video-placeholder" style={{ borderRadius: '24px', overflow: 'hidden', height: '100%' }}>
+                    <div id={containerId} style={{ transform: 'scale(1.45)', transformOrigin: 'center', width: '100%', height: '100%' }}></div>
+                </div>
+                {isMuted && (
+                    <div className="video-overlay" onClick={handleUnmute}>
+                        <p className="overlay-text-top">Tu video ya comenzó</p>
+                        <div className="mute-icon-wrapper">
+                            <svg className="mute-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M23 9L17 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M17 9L23 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                        <p className="overlay-text-bottom">Haz clic para escuchar</p>
+                    </div>
+                )}
+            </div>
+            )
+}
+
+            function FAQItem({question, answer}) {
+    const [isOpen, setIsOpen] = useState(false)
+            return (
+            <div className="faq-item" onClick={() => setIsOpen(!isOpen)} style={{ cursor: 'pointer' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <p className="faq-question" style={{ margin: 0 }}>{question}</p>
+                    <span style={{ fontSize: '20px', fontWeight: 'bold' }}>{isOpen ? '-' : '+'}</span>
+                </div>
+                {isOpen && (
+                    <div className="faq-answer fade-in" style={{ marginTop: '12px', borderTop: '1px solid #eee', paddingTop: '12px' }}>
+                        <p className="pain-text">{answer}</p>
+                    </div>
+                )}
+            </div>
+            )
+}
+
+            export function Step25SalesPage() {
+    return (
+            <div className="sales-page fade-in">
+                <div className="sales-header">
+                    <img src="/logo-vida-centro-biblico.png" alt="Vida Centro Bíblico" className="sales-logo-img" />
+                </div>
+
+                <img src="/sales-product-hero.png" alt="Resumen Cronológico de la Biblia" className="sales-hero-image" />
+
+                <div className="emoji-pointer">👇</div>
+
+                <h1 className="sales-headline">Comprende la Biblia de forma sencilla y cronológica, y vive la transformación de las enseñanzas de Dios.</h1>
+                <p className="sales-subheadline">Una forma fácil y efectiva, aprobada por miles de cristianos, de entender la Palabra de Dios de una vez por todas.</p>
+
+                <div className="pain-points-section">
+                    <div className="pain-intro-box">Intentas leer la Biblia, pero la historia siempre se repite…</div>
+
+                    <div className="pain-grid">
+                        <div className="pain-card">
+                            <img src="/pain-difficult.png" alt="Textos difíciles" className="pain-image-img" />
+                            <h3 className="pain-title">Textos difíciles y confusos</h3>
+                            <p className="pain-text">Palabras antiguas y complejas hacen que los pasajes sean casi imposibles de interpretar, lo que vuelve la lectura frustrante</p>
+                        </div>
+
+                        <div className="pain-card">
+                            <img src="/pain-order.png" alt="Orden aleatorio" className="pain-image-img" />
+                            <h3 className="pain-title">Parece estar en un orden aleatorio</h3>
+                            <p className="pain-text">Los libros parecen saltar en el tiempo, haciendo que la historia se convierta en un rompecabezas confuso, donde es casi imposible conectar las piezas</p>
+                        </div>
+
+                        <div className="pain-card">
+                            <img src="/pain-forget.png" alt="Olvidas lo que leíste" className="pain-image-img" />
+                            <h3 className="pain-title">Olvidas constantemente lo que leíste</h3>
+                            <p className="pain-text">Incluso comprendes los acontecimientos, pero pocas semanas después, cuando intentas recordarlos o alguien te pregunta, es como si todo hubiera desaparecido de tu mente</p>
+                        </div>
+
+                        <div className="pain-card">
+                            <img src="/pain-lost.png" alt="Se siente perdido" className="pain-image-img" />
+                            <h3 className="pain-title">Se siente constantemente perdido</h3>
+                            <p className="pain-text">No logra ver la conexión entre los eventos, personajes e historias, incluso después de intentar leer la misma página más de una vez</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="identification-box">
+                    <h2 className="id-title">📖🔥 ¿Te identificaste?</h2>
+                    <p style={{ fontSize: '18px', fontWeight: '700', marginBottom: '16px' }}>¡Entonces necesitas conocer el Resumen Cronológico de la Biblia!</p>
+                    <p className="pain-text">Absorber la Palabra de Dios en toda su profundidad puede ser un desafío, pero con nuestro material, la comprensión se vuelve más clara, organizada y envolvente. Visualiza las conexiones, absorbe todas las enseñanzas y fortalece tu fe con mucha más facilidad.</p>
+                </div>
+
+                <h2 className="section-title">🎁 Lo que vas a recibir:</h2>
+
+                <div className="products-grid">
+                    <div className="product-card">
+                        <img src="/bonus-app.png" alt="Versión Digital" className="product-image-img" />
+                        <h3 className="product-title">Resumen Cronológico de la Biblia - Versión Digital</h3>
+                        <p className="pain-text">La Biblia organizada en una línea de tiempo clara y estructurada. Un material digital que puedes acceder desde cualquier dispositivo y en cualquier momento</p>
+                    </div>
+
+                    <div className="product-card">
+                        <img src="/bonus-summary.png" alt="Listo para Imprimir" className="product-image-img" />
+                        <h3 className="product-title">Resumen Cronológico de la Biblia – Listo para Imprimir</h3>
+                        <p className="pain-text">La versión del resumen formateada para impresión en alta calidad. Ten la historia de la Biblia en una guía física para subrayar, tomar notas y profundizar tu conexión</p>
+                    </div>
+
+                    <div className="product-card">
+                        <img src="/bonus-prayer.png" alt="Mapas Mentales" className="product-image-img" />
+                        <h3 className="product-title">Mapas Mentales de la Biblia</h3>
+                        <p className="pain-text">Visualiza las conexiones entre eventos, personajes y profecías de forma intuitiva. Perfecto para quienes aprenden visualmente, este material te ayuda a fijar las enseñanzas y revisar la historia bíblica siempre que lo necesites</p>
+                    </div>
+
+                    <div className="product-card">
+                        <img src="/bonus-prophecies.png" alt="Biografías" className="product-image-img" />
+                        <h3 className="product-title">Biografías de los Apóstoles y Personajes</h3>
+                        <p className="pain-text">Explora la vida, el propósito y el legado de los principales personajes de la Biblia. Este material profundiza en la historia de cada uno con un resumen visual, haciendo las narrativas más ricas e inspiradoras</p>
+                    </div>
+                </div>
+
+                <div className="bonus-section">
+                    <h2 className="section-title">🎁 Además de todo esto, también recibirás…</h2>
+                    <p style={{ textAlign: 'center', marginBottom: '32px' }}>Mira los bonos exclusivos que obtendrás al adquirir el material hoy:</p>
+
+                    <div className="products-grid">
+                        <div className="product-card">
+                            <img src="/extra-bonus-commandments.png" alt="10 Mandamientos" className="product-image-img" />
+                            <h3 className="product-title">10 Mandamientos Explicados</h3>
+                            <p className="pain-text">Una guía completa que simplifica los Diez Mandamientos. Entiende el significado de cada uno de forma clara y descubre cómo aplicarlos en tu vida de fe, haciendo que los principios de Dios formen parte de tu día a día</p>
+                        </div>
+
+                        <div className="product-card">
+                            <img src="/extra-bonus-plan.png" alt="Plan de Lectura" className="product-image-img" />
+                            <h3 className="product-title">Plan de Lectura de la Biblia en 365 Días</h3>
+                            <p className="pain-text">Un plan de lectura estructurado para guiarte a través de toda la Biblia en 365 días. Una metodología validada por cristianos de todo el mundo, conocida como la mejor forma de leer la Biblia y absorber sus enseñanzas</p>
+                        </div>
+
+                        <div className="product-card">
+                            <img src="/extra-bonus-women.png" alt="Mujeres Virtuosas" className="product-image-img" />
+                            <h3 className="product-title">Mujeres Virtuosas de la Biblia</h3>
+                            <p className="pain-text">Descubre las virtudes, historias y enseñanzas de las mujeres de fe en la Biblia. Encuentra inspiración, fortaleza y sabiduría en sus ejemplos para aplicar en tu propia jornada como cristiana</p>
+                        </div>
+
+                        <div className="product-card">
+                            <img src="/extra-bonus-miracles.png" alt="43 Milagros" className="product-image-img" />
+                            <h3 className="product-title">Los 43 milagros de Jesús</h3>
+                            <p className="pain-text">Conoces los milagros de Jesús, ¿pero estás seguro de que conoces los 43? Esta guía va más allá de los milagros más conocidos, explorando en profundidad cada uno de ellos con su contexto, propósito y significado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 className="section-title">¿Por qué funciona el Resumen Cronológico?</h2>
+
+                <div className="products-grid">
+                    <div className="feature-card">
+                        <div style={{ fontSize: '48px', marginBottom: '12px' }}>🕰</div>
+                        <h3 style={{ fontWeight: '700', marginBottom: '8px' }}>Orden Cronológica</h3>
+                        <p className="pain-text">La Biblia no sigue un orden cronológico. Nuestro resumen reorganiza todos los eventos en una única línea de tiempo, transformando historias aisladas en una narrativa coherente</p>
+                    </div>
+
+                    <div className="feature-card">
+                        <div style={{ fontSize: '48px', marginBottom: '12px' }}>📚</div>
+                        <h3 style={{ fontWeight: '700', marginBottom: '8px' }}>Facilidad de Aprendizaje</h3>
+                        <p className="pain-text">Material visual que simplifica textos complejos, facilitando conexiones y haciendo que el aprendizaje sea claro y agradable</p>
+                    </div>
+
+                    <div className="feature-card">
+                        <div style={{ fontSize: '48px', marginBottom: '12px' }}>✅</div>
+                        <h3 style={{ fontWeight: '700', marginBottom: '8px' }}>Metodología Comprobada</h3>
+                        <p className="pain-text">Revisado y aprobado por más de 37 líderes religiosos para transmitir la Palabra del Señor con un 100% de fidelidad</p>
+                    </div>
+
+                    <div className="feature-card">
+                        <div style={{ fontSize: '48px', marginBottom: '12px' }}>⚡</div>
+                        <h3 style={{ fontWeight: '700', marginBottom: '8px' }}>Acelera tu jornada</h3>
+                        <p className="pain-text">Optimiza tu lectura para avanzar de forma rápida y constante, liberando tiempo para la reflexión y la oración</p>
+                    </div>
+                </div>
+
+                <div className="author-section">
+                    <img src="/author-photo.png" alt="Helena López" className="author-photo-img" />
+                    <p className="author-text">✍️ Material escrito por Helena López, mujer cristiana, mentora bíblica y autora del Resumen Cronológico de la Biblia.</p>
+                </div>
+
+                <h2 className="section-title">Mira la opinión de quienes aprenden de la palabra de Dios con nuestro resumen</h2>
+
+                <ShortsPlayer videoId="xdM7y1M-e3I" />
+                <ShortsPlayer videoId="3GmR3GDLf5M" />
+
+                <h2 className="section-title">¡Y aún recibes un regalo más!</h2>
+
+                <div className="bonus-box-blue">
+                    <img src="/bonus-kids.png" alt="Actividades Bíblicas" className="bonus-image-img" style={{ width: '100%', borderRadius: '12px', marginBottom: '20px' }} />
+                    <p className="bonus-intro">Al adquirir el Resumen Cronológico de la Biblia hoy, también recibes:</p>
+                    <h3 className="bonus-title-dark">🎁 Actividades Bíblicas para Niños</h3>
+                    <p className="bonus-text-blue">Un material lúdico y educativo con actividades interactivas. Perfecto para padres que desean enseñar las grandes historias y valores de la Biblia a sus hijos de forma divertida y memorable.</p>
+                </div>
+
+                <div className="whatsapp-delivery-box">
+                    <img src="/whatsapp-icon.png" alt="WhatsApp" className="whatsapp-icon-img" style={{ width: '100px', height: 'auto', margin: '0 auto 16px', display: 'block' }} />
+                    <h3 className="whatsapp-title">Recibe el producto en tu WhatsApp</h3>
+                    <p className="pain-text">Recibirás un mensaje en tu WhatsApp y en tu correo electrónico con todas las instrucciones para acceder al contenido. El proceso es muy simple y en menos de 1 minuto ya tendrás todo el contenido en tus manos.</p>
+                </div>
+
+                <div className="price-section-premium">
+                    <div className="urgency-badge pulse">
+                        <span className="urgency-icon">🕗</span>
+                        <span className="urgency-text">¡Último día a este precio!</span>
+                    </div>
+
+                    <div className="benefits-list">
+                        <div className="benefit-item">✓ Acceso de por vida</div>
+                        <div className="benefit-item">✓ Garantía de 30 días</div>
+                    </div>
+
+                    <p className="offer-label">Recibe ahora</p>
+                    <h3 className="offer-title">Resumen Cronológico de la Biblia<br />+ Todos los Bonos Especiales</h3>
+
+                    <div className="price-comparison">
+                        <span className="price-from">De <span className="old-price-large">$59.90</span> por</span>
+                    </div>
+
+                    <div className="price-tag-mega">$9.90</div>
+                    <div className="discount-badge">83% de descuento</div>
+
+                    <button className="btn btn-primary btn-mega pulse" onClick={() => { window.fbq && window.fbq('track', 'InitiateCheckout', { value: 9.90, currency: 'USD' }); window.location.href = 'https://pay.hotmart.com/X103135143F?off=s3p34im4&checkoutMode=10&offDiscount=NAVIDAD&bid=1765135162642'; }}>Haz clic aquí para asegurar tu material</button>
+                </div>
+
+                <div className="product-card" style={{ marginTop: '32px', textAlign: 'center' }}>
+                    <img src="/payment-info.png" alt="Información de Pago" style={{ width: '100%', maxWidth: '400px', margin: '0 auto' }} />
+                </div>
+
+                <div className="guarantee-section">
+                    <img src="/guarantee-badge.png" alt="Garantía de 30 días" style={{ width: '100%', maxWidth: '280px', margin: '0 auto 24px', display: 'block' }} />
+                    <h2 className="section-title">Garantía Incondicional</h2>
+                    <p className="pain-text" style={{ marginBottom: '16px' }}>Tenemos tanta confianza en que nuestro Resumen Cronológico transformará tu manera de conectar con la Biblia, que ofrecemos una garantía incondicional de 30 días.</p>
+                    <p className="pain-text" style={{ marginBottom: '16px' }}>Si por cualquier motivo no te gusta nuestro material, te devuelvo todo tu dinero y además te dejo el acceso al material como muestra de gratitud por haberlo probado.</p>
+                    <p className="pain-text" style={{ fontWeight: '700' }}>💬 Tu riesgo es literalmente cero, así de simple.</p>
+                    <p className="pain-text" style={{ marginTop: '16px' }}>No hay ningún motivo para que no aproveches esta oportunidad.</p>
+
+                    <button className="btn btn-primary pulse" style={{ marginTop: '24px' }} onClick={() => { window.fbq && window.fbq('track', 'InitiateCheckout', { value: 9.90, currency: 'USD' }); window.location.href = 'https://pay.hotmart.com/X103135143F?off=s3p34im4&checkoutMode=10&offDiscount=NAVIDAD&bid=1765135162642'; }}>Haz clic aquí para asegurar tu material</button>
+                </div>
+
+                <h2 className="section-title">Mira cómo vas a recibir tu material:</h2>
+                <ShortsPlayer videoId="kCeZUdhVJUU" />
+
+                <h2 className="section-title">Preguntas frecuentes</h2>
+
+                <div className="faq-container">
+                    <FAQItem question="✅ ¿Cómo recibiré acceso al material?" answer="Recibirás un correo electrónico y un mensaje de WhatsApp con los datos de acceso inmediatamente después de la compra. Es 100% digital y el acceso es vitalicio." />
+                    <FAQItem question="✅ ¿Es apto para principiantes?" answer="Sí, totalmente. El método está diseñado para ser simple, visual y fácil de entender, guiándote paso a paso en la cronología bíblica incluso si es tu primera vez estudiándola." />
+                    <FAQItem question="✅ ¿El material es físico o digital?" answer="Es un producto 100% digital (PDF de alta calidad). Podrás acceder a él desde tu celular, tablet o computadora inmediatamente. También incluimos una versión lista para imprimir si prefieres tenerlo en papel." />
+                    <FAQItem question="✅ ¿Este material sustituye a la Biblia?" answer="No. Es una herramienta de estudio complementaria que organiza los eventos cronológicamente para facilitar tu comprensión. Debe usarse junto con tu lectura bíblica habitual." />
+                    <FAQItem question="✅ ¿El producto es apto para católicos?" answer="Sí. El Resumen Cronológico se basa puramente en los hechos históricos y narrativos de las Escrituras, respetando la cronología sagrada aceptada por todas las vertientes del cristianismo." />
+                </div>
+
+                <div style={{ padding: '20px', textAlign: 'center' }}>
+                    <button className="btn btn-primary pulse" onClick={() => { window.fbq && window.fbq('track', 'InitiateCheckout', { value: 9.90, currency: 'USD' }); window.location.href = 'https://pay.hotmart.com/X103135143F?off=s3p34im4&checkoutMode=10&offDiscount=NAVIDAD&bid=1765135162642'; }}>Haz clic aquí para asegurar tu material</button>
+                </div>
+
+                <h2 className="section-title">Más comentarios sobre nuestro material</h2>
+
+                <div className="testimonial-card">
+                    <div className="testimonial-header">
+                        <img src="/testimonial_maria.png" alt="María González" className="testimonial-avatar-img" />
+                        <div className="testimonial-name">María González</div>
+                    </div>
+                    <p className="pain-text">Siempre me parecía difícil entender la Biblia, pero el Resumen Cronológico me ayudó a ver todo de forma clara y organizada. ¡Ahora mi lectura tiene mucho más sentido!</p>
+                </div>
+
+                <div className="testimonial-card">
+                    <div className="testimonial-header">
+                        <img src="/testimonial_carlos.png" alt="Carlos Ramírez" className="testimonial-avatar-img" />
+                        <div className="testimonial-name">Carlos Ramírez</div>
+                    </div>
+                    <p className="pain-text">Con el Resumen Cronológico de la Biblia, finalmente logré conectar las enseñanzas e historias de manera lógica. ¡Nunca antes mi lectura había sido tan provechosa!</p>
+                </div>
+
+                <div className="testimonial-card">
+                    <div className="testimonial-header">
+                        <img src="/testimonial_lucia.png" alt="Lucía Fernández" className="testimonial-avatar-img" />
+                        <div className="testimonial-name">Lucía Fernández</div>
+                    </div>
+                    <p className="pain-text">Yo leía la Biblia, pero no lograba ver la relación entre los libros. El Mapa de la Biblia me abrió los ojos a una comprensión más profunda y esclarecedora.</p>
+                </div>
+
+                <div className="testimonial-card">
+                    <div className="testimonial-header">
+                        <img src="/testimonial_juan.png" alt="Juan Pablo Ortega" className="testimonial-avatar-img" />
+                        <div className="testimonial-name">Juan Pablo Ortega</div>
+                    </div>
+                    <p className="pain-text">¡Nunca pensé que pudiera aprender tanto sobre la Biblia de manera tan clara! El Resumen Cronológico de la Biblia es una guía esencial para cualquier cristiano.</p>
+                </div>
+
+                <div className="testimonial-card">
+                    <div className="testimonial-header">
+                        <img src="/testimonial_sofia.png" alt="Sofía Morales" className="testimonial-avatar-img" />
+                        <div className="testimonial-name">Sofía Morales</div>
+                    </div>
+                    <p className="pain-text">Siempre quise comprender la Biblia con más profundidad, pero no sabía por dónde empezar. ¡El Resumen Cronológico de la Biblia fue la solución que necesitaba!</p>
+                </div>
+
+                <div className="price-section-premium">
+                    <div className="urgency-badge pulse">
+                        <span className="urgency-icon">🕗</span>
+                        <span className="urgency-text">¡Último día a este precio!</span>
+                    </div>
+
+                    <div className="benefits-list">
+                        <div className="benefit-item">✓ Acceso de por vida</div>
+                        <div className="benefit-item">✓ Garantía de 30 días</div>
+                    </div>
+
+                    <p className="offer-label">Recibe ahora</p>
+                    <h3 className="offer-title">Resumen Cronológico de la Biblia<br />+ Todos los Bonos Especiales</h3>
+
+                    <div className="price-comparison">
+                        <span className="price-from">De <span className="old-price-large">$59.90</span> por</span>
+                    </div>
+
+                    <div className="price-tag-mega">$9.90</div>
+                    <div className="discount-badge">83% de descuento</div>
+
+                    <button className="btn btn-primary btn-mega pulse" onClick={() => { window.fbq && window.fbq('track', 'InitiateCheckout', { value: 9.90, currency: 'USD' }); window.location.href = 'https://pay.hotmart.com/X103135143F?off=s3p34im4&checkoutMode=10&offDiscount=NAVIDAD&bid=1765135162642'; }}>Haz clic aquí para asegurar tu material</button>
+                </div>
+
+                <div className="product-card">
+                    <div className="product-image"></div>
+                </div>
+            </div>
+            )
+}

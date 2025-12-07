@@ -1,0 +1,91 @@
+.app {
+    min-height: 100vh;
+    background-color: #FFFFFF;
+}
+
+/* Progress Bar - SMALLER AND ROUNDED */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: #F3F4F6;
+    z-index: 1000;
+    border-radius: 0 0 4px 4px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #000000;
+    transition: width 0.3s ease;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Common Button Styles */
+.btn {
+    display: inline-block;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btn-primary {
+    background-color: #38A84A;
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(56, 168, 74, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #2e8b3d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(56, 168, 74, 0.4);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* SUPER FAST FADE TRANSITION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.15s ease-out;
+    /* Super fast transition */
+}

@@ -1,0 +1,76 @@
+.step1-landing {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Stack vertically */
+    align-items: center;
+    justify-content: flex-start;
+    /* Align to top */
+    padding: 80px 20px 40px;
+    /* More top padding */
+    background-color: #FFFFFF;
+}
+
+.landing-content {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.landing-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.landing-subtitle {
+    font-size: 18px;
+    color: #4B5563;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.incentive-box {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    color: #DC2626;
+    background-color: #FEF2F2;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+
+.scroll-illustration {
+    margin-bottom: 32px;
+}
+
+.scroll-placeholder {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-text {
+    font-size: 14px;
+    color: #8B7355;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .landing-title {
+        font-size: 28px;
+    }
+
+    .scroll-placeholder {
+        height: 200px;
+    }
+}
